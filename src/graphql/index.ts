@@ -6,8 +6,11 @@ async function createApoloGraphqlServer() {
     // GraphQl Server config
     const gqlServer = new ApolloServer({
         typeDefs: `
+
+            ${User.typeDefs}
             type Query {
                 ${User.queries}
+
             }
 
             type Mutation {
@@ -18,6 +21,7 @@ async function createApoloGraphqlServer() {
         resolvers: {
             Query: {
                 ...User.resolvers.queries
+                
             },
 
             Mutation: {
@@ -25,7 +29,8 @@ async function createApoloGraphqlServer() {
             }
            
         }  // folding logic
-
+        ,
+        
 
 
     });
